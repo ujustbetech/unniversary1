@@ -11,13 +11,13 @@ function Login() {
     const [mobilenumber, setmobilenumber] = useState('');
 
 
-    const config = {
-        headers: {
-            'content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': '*'
-        }
-    }
+    // const config = {
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Headers': '*'
+    //     }
+    // }
 
     const dataToBeFedToFootballersAPI = {
         firstname: firstname,
@@ -26,15 +26,43 @@ function Login() {
         mobilenumber: mobilenumber,
     }
 
+    var data = JSON.stringify({
+        firstname: firstname,
+        lastname: lastname,
+        role: role,
+        mobilenumber: mobilenumber,
+      });
+      
+      var config = {
+        method: 'post',
+      maxBodyLength: Infinity,
+        url: 'https://sandhiyaacharya.pythonanywhere.com/reg/',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+     
+
     const handleClick = async (event) => {
         event.preventDefault()
 
-        await axios.post(`https://sandhiyaacharya.pythonanywhere.com/reg/`, dataToBeFedToFootballersAPI, config)
-            .then((response) => {
-                // dispatch(createFootballPlayerProfile(response.data))
-                console.log(response.data)
-                // setPostValStatus(true);
-            })
+        // await axios.post(`https://sandhiyaacharya.pythonanywhere.com/reg/`, dataToBeFedToFootballersAPI, config)
+        //     .then((response) => {
+        //         // dispatch(createFootballPlayerProfile(response.data))
+        //         console.log(response.data)
+        //         // setPostValStatus(true);
+        //     })
+
+       await axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        
 
 //             await axios.get("https://sandhiyaacharya.pythonanywhere.com/reg/")
 //   .then(function (response) {
