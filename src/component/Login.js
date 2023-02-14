@@ -13,8 +13,11 @@ function Login() {
 
     const config = {
         headers: {
+//             'content-type': 'application/json',
+//             'Access-Control-Allow-Origin': "*"
             'content-type': 'application/json',
-            'Access-Control-Allow-Origin': "*"
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*'
         }
     }
 
