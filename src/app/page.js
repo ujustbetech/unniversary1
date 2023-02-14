@@ -5,6 +5,8 @@
 // import Login from '../components/Login'
 // import styles from '../styles/main.scss'
 
+import Login from "../component/Login";
+
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -12,8 +14,9 @@ export default function Home() {
   return (
     <>
       {/* <Login/> */}
-      <h1>anniversary page</h1>
-      <h6>Content</h6>
+      <Login/>
+      {/* <h1>anniversary page</h1>
+      <h6>Content</h6> */}
     </>
   )
 }
