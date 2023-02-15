@@ -9,60 +9,34 @@ function Login() {
     const [lastname, setlastname] = useState('');
     const [role, setrole] = useState('');
     const [mobilenumber, setmobilenumber] = useState('');
+    const [responsedata, setresponsedata] = useState("");
+    const [showpopup, setshowpopup] = useState(false)
 
-
-    const config = {
-        headers: {
-            'content-type': 'application/json',
-            'Access-Control-Allow-Origin': "*"
-        }
-    }
-
-    const dataToBeFedToFootballersAPI = {
-        firstname: firstname,
-        lastname: lastname,
-        role: role,
-        mobilenumber: mobilenumber,
-    }
-
-    const handleClick = async (event) => {
-        event.preventDefault()
-
-        await axios.post(`https://sandhiyaacharya.pythonanywhere.com/reg/`, dataToBeFedToFootballersAPI, config)
-            // .then((response) => {
-            //     // dispatch(createFootballPlayerProfile(response.data))
-            //     console.log(response.data)
-            //     // setPostValStatus(true);
-            // })
-
-           await axios.get("https://finalspaceapi.com/api/v0/character/?limit=2")
-  .then(function (response) {
-    console.log(response);
-  });
-    }
-
-
-
-    const handleClick9 = async (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
         const user = {
             firstname: firstname,
             lastname: lastname,
             role: role,
-            mobilenumber: mobilenumber,
+            phonenumber: mobilenumber,
         }
         const response = await axios
-            .post('https://sandhiyaacharya.pythonanywhere.com/reg/', user)
+            .post('https://plankton-app-i2dnd.ondigitalocean.app/reg/', user)
             .catch((error) => console.log('Error: ', error));
         if (response && response.data) {
             console.log(response);
             console.log(response.data);
+            if (response.status === 201) {
+                setshowpopup(true);
+                setresponsedata(response.data)
+                console.log("suscess");
+            }
         }
     };
 
     return (
-        <>
-            <section className='c-loginpage'>
+        <section className='c-loginpage'>
+            <div className='c-login'>
                 <div className='logo'>
                     <div className='ujblogo'>
                         <img src="/images/logo.png" />
@@ -90,13 +64,18 @@ function Login() {
                     }}></input>
                     <button type="submit" onClick={handleClick}> Submit</button>
                 </div>
-            </section>
-            <div className='c-loginpopup'>
-                <img src="/images/checked.png" />
-                <h5>Hi Orbiter Rajeev Ubhe</h5>
-                <h4>Welcome to celebration </h4>
             </div>
-        </>
+            {
+                showpopup ?
+                    <div className='c-popupbg'>
+                        <div className='c-loginpopup'>
+                            <img src="/images/checked.png" />
+                            <h5>Hi Orbiter {responsedata.firstname} {responsedata.lastname}</h5>
+                            <h4>Welcome to celebration </h4>
+                        </div>
+                    </div> : null
+            }
+        </section>
     )
 }
 
