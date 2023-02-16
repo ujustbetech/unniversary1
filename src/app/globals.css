@@ -128,6 +128,10 @@ input {
   cursor: default;
 }
 
+.c-loginpage .c-login .logo .unniversarylogo img{
+  width: 300px;
+}
+
 .c-loginpage .c-login .logo {
   display: flex;
   flex-direction: column;
@@ -282,38 +286,41 @@ input {
   font-family: "Mukta", sans-serif;
   text-align: center;
 }
+
 .c-logindone ul li h6 {
   font-size: 20px;
   color: #ffffff;
   font-weight: 500;
   font-family: "Mukta", sans-serif;
   text-align: center;
-  
+
 }
 
 .c-logindone ul li {
   display: flex;
   line-height: 32px;
-  column-gap: 20px;
+  column-gap: 6px;
   /* padding: 12px 20px; */
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.show-counter{
+.show-counter {
   display: flex;
   align-items: center;
   justify-content: start;
   flex-direction: column;
 }
-.show-counter .eventdate{
-  font-size: 42px;
+
+.show-counter .eventdate {
+  font-size: 38px;
   line-height: 67px;
   color: #ffffff;
   font-weight: 400;
   font-family: "Forum";
   margin-bottom: 100px;
 }
+
 .show-counter .countdown-link {
   display: flex;
   flex-wrap: wrap;
@@ -325,8 +332,8 @@ input {
   pointer-events: none;
 }
 
-.show-counter .countdown-link .eventday .countdown  {
-  font-size: 102px;
+.show-counter .countdown-link .eventday .countdown {
+  font-size: 90px;
   line-height: 72px;
   color: #fe6f06;
   font-weight: 800;
@@ -336,8 +343,8 @@ input {
   column-gap: 10px;
 }
 
-.show-counter .countdown-link .eventtime .countdown  {
-  font-size: 30px;
+.show-counter .countdown-link .eventtime .countdown {
+  font-size: 26px;
   line-height: 30px;
   color: #a2cbda;
   font-weight: 600;
@@ -347,11 +354,13 @@ input {
   justify-content: center;
   column-gap: 5px;
 }
-.show-counter .countdown-link .eventtime{
+
+.show-counter .countdown-link .eventtime {
   display: flex;
   column-gap: 10px;
 }
-.show-counter .countdown-link .eventtime p{
+
+.show-counter .countdown-link .eventtime p {
   display: flex;
   font-size: 30px;
   line-height: 30px;
@@ -359,6 +368,7 @@ input {
   font-weight: 600;
   font-family: "Mukta";
 }
+
 .c-logindone .logos {
   display: flex;
   flex-direction: column;
@@ -367,7 +377,12 @@ input {
   justify-content: center;
   row-gap: 32px;
 }
-.c-logindone .logos .welcome{
+
+.c-logindone .logos .unniversaryl img{
+  width: 300px;
+}
+
+.c-logindone .logos .welcome {
   color: #ffffff;
   font-weight: 600;
   font-family: "Mukta";
