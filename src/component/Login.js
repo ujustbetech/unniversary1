@@ -1,4 +1,5 @@
 "use client";
+import CountdownTimer from '../CountdownTimer';
 import axios from 'axios';
 import React, { useState } from 'react';
 // import logo from '../images/logo.png'
@@ -94,7 +95,11 @@ function Login() {
         console.log(showpopup);
     };
 
+    const THREE_DAYS_IN_MS = 12 * 24 * 60 * 60 * 1000;
+    const NOW_IN_MS = new Date().getTime();
 
+    const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+    
 
     return (
         <section className='c-loginpage'>
@@ -107,12 +112,13 @@ function Login() {
                         <img src="/images/unniversary.png" />
                     </div>
                 </div>
+                <CountdownTimer targetDate={dateTimeAfterThreeDays} />
                 {
-                    loginDone?<div>
+                    loginDone ? <div>
                         hkhkhkkh
-                        </div>:null
-                }
-                {
+                    </div> : null
+                    }
+                    {
                     registration ? <form onSubmit={handleClick}>
                         <div className='regfrom'>
                             <input required type='tel' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
@@ -136,9 +142,9 @@ function Login() {
                             <button type="submit" > Submit</button>
                         </div>
                     </form> : null
-                }
+                    }
 
-                {
+                    {
                     loginstate ? <form onSubmit={loginClick}>
                         <div className='regfrom'>
                             <input required type='tel' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
@@ -147,40 +153,40 @@ function Login() {
                             <button type="submit" > Submit</button>
                         </div>
                     </form> : null
-                }
+                    }
             </div>
             {
                 showpopup ? <div className='c-popupbg'>
                     <div onClick={hidepopup} className='bg-popup'></div>
                     <div className='c-loginpopup'>
-                    <div>
-                        <img src="/images/checked.png" />
-                        <h5>Hi Orbiter {responsedata.firstname} {responsedata.lastname}</h5>
-                        <h4>Welcome to celebration </h4>
-                    </div>
-                </div></div> : null
+                        <div>
+                            <img src="/images/checked.png" />
+                            <h5>Hi Orbiter {responsedata.firstname} {responsedata.lastname}</h5>
+                            <h4>Welcome to celebration </h4>
+                        </div>
+                    </div></div> : null
             }
             {
                 showpopup2 ? <div className='c-popupbg'>
                     <div onClick={hidepopup} className='bg-popup'></div>
                     <div className='c-loginpopup'>
-                    <div>
-                        <img src="/images/cancel_icon.png" />
-                        <h5>This number already Exist</h5>
-                        {/* <h4>Welcome to celebration </h4> */}
-                    </div>
-                </div></div> : null
+                        <div>
+                            <img src="/images/cancel_icon.png" />
+                            <h5>This number already Exist</h5>
+                            {/* <h4>Welcome to celebration </h4> */}
+                        </div>
+                    </div></div> : null
             }
             {
                 loginfailedpopup ? <div className='c-popupbg'>
                     <div onClick={hidepopup} className='bg-popup'></div>
                     <div className='c-loginpopup'>
-                    <div>
-                        <img src="/images/cancel_icon.png" />
-                        <h5>You have not register yet kindly register </h5>
-                        {/* <h4>Welcome to celebration </h4> */}
-                    </div>
-                </div></div> : null
+                        <div>
+                            <img src="/images/cancel_icon.png" />
+                            <h5>You have not register yet kindly register </h5>
+                            {/* <h4>Welcome to celebration </h4> */}
+                        </div>
+                    </div></div> : null
             }
         </section>
     )
