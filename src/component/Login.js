@@ -88,22 +88,22 @@ function Login() {
                 </div>
             </div>
             {
-                showpopup ? <div className='c-loginpopup'>
+                showpopup ? <div className='c-popupbg'><div className='c-loginpopup'>
                     <div>
                         <img src="/images/checked.png" />
                         <h5>Hi Orbiter {responsedata.firstname} {responsedata.lastname}</h5>
                         <h4>Welcome to celebration </h4>
                     </div>
-                </div> : null
+                </div></div> : null
             }
             {
-                showpopup2 ? <div className='c-loginpopup'>
+                showpopup2 ? <div className='c-popupbg'><div className='c-loginpopup'>
                     <div>
                         <img src="/images/cancel_icon.png" />
                         <h5>This number already Exist</h5>
                         {/* <h4>Welcome to celebration </h4> */}
                     </div>
-                </div> : null
+                </div></div> : null
             }
         </section>
     )
