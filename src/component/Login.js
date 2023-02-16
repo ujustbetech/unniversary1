@@ -46,11 +46,7 @@ function Login() {
             }
         }
 
-        // fetch('https://plankton-app-i2dnd.ondigitalocean.app/reg/')
-        //     .then(response => response.json())
-        //     .then(json => console.log(json))
-        // add class success-popup to c-login  and to show hide 
-        // setshowpopup(true);
+        
         console.log(showpopup);
     };
 
