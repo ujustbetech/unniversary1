@@ -279,7 +279,7 @@ input {
   font-weight: 500;
   font-family: "forum";
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .c-logindone ul li h5 {
@@ -301,7 +301,7 @@ input {
 
 .c-logindone ul li {
   display: flex;
-  line-height: 32px;
+  line-height: 22px;
   column-gap: 6px;
   /* padding: 12px 20px; */
   flex-wrap: wrap;
@@ -321,7 +321,7 @@ input {
   color: #ffffff;
   font-weight: 400;
   font-family: "Forum";
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .show-counter .countdown-link {
@@ -379,7 +379,7 @@ input {
   row-gap: 64px;
   align-items: center;
   justify-content: center;
-  row-gap: 32px;
+  row-gap: 20px;
 }
 
 .c-logindone .logos .unniversaryl img{
@@ -393,8 +393,8 @@ input {
   color: #a2cbda;
   font-weight: 600;
   font-family: "Mukta";
-  font-size: 24px;
+  font-size: 16px;
 }
-.c-logindone .logos .welcome span {
+/* .c-logindone .logos .welcome span {
   font-weight: 800;
-}
+} */
