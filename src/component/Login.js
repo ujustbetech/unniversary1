@@ -127,7 +127,10 @@ function Login() {
                             <div className='ujbl'>
                                 <img src="/images/logo.png" />
                             </div>
-                            <div className='welcome'>{'Welcome '}{responsedata.firstname} {responsedata.lastname}</div>
+                            <div className='welcome'>{'Welcome '}
+                                <span>
+                                    {responsedata.firstname} {responsedata.lastname}
+                                </span></div>
                             <div className='unniversaryl'>
                                 <img src="/images/unniversary.png" />
                             </div>
