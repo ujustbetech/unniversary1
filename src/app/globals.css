@@ -118,6 +118,8 @@ input {
   background-size: cover;
   padding: 50px 0;
   position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .c-loginpage .c-login.success-popup {
@@ -242,4 +244,17 @@ input {
   text-align: center;
   font-weight: 400;
   font-family: "Forum";
+}
+
+.bg-popup{
+  /* background-color: #959595; */
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.c-loginpopup{
+  z-index: 1;
 }
