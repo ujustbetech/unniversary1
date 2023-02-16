@@ -246,7 +246,7 @@ input {
   font-family: "Forum";
 }
 
-.bg-popup{
+.bg-popup {
   /* background-color: #959595; */
   cursor: pointer;
   position: absolute;
@@ -255,6 +255,68 @@ input {
   width: 100%;
   height: 100%;
 }
-.c-loginpopup{
+
+.c-loginpopup {
   z-index: 1;
+}
+
+.c-loginpopup {
+  z-index: 1;
+}
+
+.c-logindone h2 {
+  font-size: 42px;
+  line-height: 60px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Mukta", sans-serif;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.c-logindone ul li h5 {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Mukta", sans-serif;
+  text-align: center;
+}
+
+.c-logindone ul li {
+  display: flex;
+  line-height: 42px;
+  column-gap: 20px;
+  padding: 12px 20px;
+  flex-wrap: wrap;
+}
+
+.show-counter .countdown-link {
+  display: flex;
+  flex-wrap: wrap;
+  text-decoration: none;
+  justify-content: center;
+  column-gap: 10px;
+  pointer-events: none;
+}
+
+.show-counter .countdown-link .countdown:first-child {
+  font-size: 150px;
+  line-height: 160px;
+  color: #fe6f06;
+  font-weight: 800;
+  font-family: "Mukta", sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+.show-counter .countdown-link .countdown {
+  font-size: 30px;
+  line-height: 60px;
+  color: #a2cbda;
+  font-weight: 600;
+  font-family: "Mukta";
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  column-gap: 5px;
 }

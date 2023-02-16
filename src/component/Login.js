@@ -114,9 +114,27 @@ function Login() {
                 </div>
                 <CountdownTimer targetDate={dateTimeAfterThreeDays} />
                 {
-                    loginDone ? <div>
-                        hkhkhkkh
-                    </div> : null
+                    loginDone?<div className='c-logindone'>
+                            <h2>Event Details</h2>
+                            <ul>
+                                <li>
+                                    <h5>Date:</h5>
+                                    <h5>Sunday, 26th February 2023</h5>
+                                </li>
+                                <li>
+                                    <h5>Time:</h5>
+                                    <h5>4:00 pm onwards</h5>
+                                </li>
+                                <li>
+                                    <h5>Venue:</h5>
+                                    <h5>Country Club, Andheri West</h5>
+                                </li>
+                                <li>
+                                    <h5>Dress Code:</h5>
+                                    <h5>Traditional Indian Wear</h5>
+                                </li>
+                            </ul>
+                        </div>:null
                     }
                     {
                     registration ? <form onSubmit={handleClick}>
