@@ -137,6 +137,7 @@ input {
   margin-bottom: 30px;
 }
 
+
 .c-loginpage .c-login .regfrom {
   padding: 16px 42px;
   display: flex;
@@ -210,7 +211,7 @@ input {
 
 .c-loginpage .c-loginpopup {
   max-width: 460px;
-  width: 100%;
+  width: 90%;
   border-radius: 10px;
   background-color: #ffffff;
   padding: 60px 22px;
@@ -265,52 +266,79 @@ input {
 }
 
 .c-logindone h2 {
-  font-size: 42px;
-  line-height: 60px;
-  color: #ffffff;
+  font-size: 36px;
+  line-height: 52px;
+  color: #a2cbda;
   font-weight: 500;
-  font-family: "Mukta", sans-serif;
+  font-family: "forum";
   text-align: center;
-  margin-bottom: 12px;
+  margin-top: 60px;
 }
 
 .c-logindone ul li h5 {
-  font-size: 28px;
+  font-size: 22px;
   color: #ffffff;
   font-weight: 500;
   font-family: "Mukta", sans-serif;
   text-align: center;
+}
+.c-logindone ul li h6 {
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Mukta", sans-serif;
+  text-align: center;
+  
 }
 
 .c-logindone ul li {
   display: flex;
-  line-height: 42px;
+  line-height: 32px;
   column-gap: 20px;
-  padding: 12px 20px;
+  /* padding: 12px 20px; */
   flex-wrap: wrap;
+  justify-content: center;
 }
 
+.show-counter{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+.show-counter .eventdate{
+  font-size: 42px;
+  line-height: 67px;
+  color: #ffffff;
+  font-weight: 400;
+  font-family: "Forum";
+  margin-bottom: 100px;
+}
 .show-counter .countdown-link {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   text-decoration: none;
   justify-content: center;
   column-gap: 10px;
+  flex-direction: column;
   pointer-events: none;
 }
 
-.show-counter .countdown-link .countdown:first-child {
-  font-size: 92px;
-  line-height: 160px;
+.show-counter .countdown-link .eventday .countdown  {
+  font-size: 102px;
+  line-height: 72px;
   color: #fe6f06;
   font-weight: 800;
   font-family: "Mukta", sans-serif;
   text-align: center;
+  display: flex;
+  column-gap: 10px;
 }
 
-.show-counter .countdown-link .countdown {
+.show-counter .countdown-link .eventtime .countdown  {
   font-size: 30px;
-  line-height: 60px;
+  line-height: 30px;
   color: #a2cbda;
   font-weight: 600;
   font-family: "Mukta";
@@ -318,4 +346,30 @@ input {
   display: flex;
   justify-content: center;
   column-gap: 5px;
+}
+.show-counter .countdown-link .eventtime{
+  display: flex;
+  column-gap: 10px;
+}
+.show-counter .countdown-link .eventtime p{
+  display: flex;
+  font-size: 30px;
+  line-height: 30px;
+  color: #a2cbda;
+  font-weight: 600;
+  font-family: "Mukta";
+}
+.c-logindone .logos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+  align-items: center;
+  justify-content: center;
+  row-gap: 32px;
+}
+.c-logindone .logos .welcome{
+  color: #ffffff;
+  font-weight: 600;
+  font-family: "Mukta";
+  font-size: 24px;
 }

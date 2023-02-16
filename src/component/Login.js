@@ -48,6 +48,10 @@ function Login() {
                     setfirstname("")
                     setlastname("")
                     setmobilenumber("")
+                    setloginDone(true)
+                    setlogin(false)
+                    setregistration(false)
+
 
                 }, 3000);
 
@@ -69,6 +73,7 @@ function Login() {
             // 
             .then(response => {
                 const posts = response.data;
+                setresponsedata(response.data);
                 console.log(response);
                 if (response.status === 200) {
                     setloginDone(true)
@@ -99,12 +104,12 @@ function Login() {
     const NOW_IN_MS = new Date().getTime();
 
     const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
-    
+
 
     return (
         <section className='c-loginpage'>
             <div className='c-login'>
-                <div className='logo'>
+                {loginDone ? null : <div className='logo'>
                     <div className='ujblogo'>
                         <img src="/images/logo.png" />
                     </div>
@@ -112,34 +117,47 @@ function Login() {
                         <img src="/images/unniversary.png" />
                     </div>
                 </div>
-                <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+
+                }
+
+
                 {
-                    loginDone?<div className='c-logindone'>
-                            <h2>Event Details</h2>
-                            <ul>
-                                <li>
-                                    <h5>Date:</h5>
-                                    <h5>Sunday, 26th February 2023</h5>
-                                </li>
-                                <li>
-                                    <h5>Time:</h5>
-                                    <h5>4:00 pm onwards</h5>
-                                </li>
-                                <li>
-                                    <h5>Venue:</h5>
-                                    <h5>Country Club, Andheri West</h5>
-                                </li>
-                                <li>
-                                    <h5>Dress Code:</h5>
-                                    <h5>Traditional Indian Wear</h5>
-                                </li>
-                            </ul>
-                        </div>:null
-                    }
-                    {
+                    loginDone ? <div className='c-logindone'>
+                        <div className='logos'>
+                            <div className='ujbl'>
+                                <img src="/images/logo.png" />
+                            </div>
+                            <div className='welcome'>{'Welcome '}{responsedata.firstname} {responsedata.lastname}</div>
+                            <div className='unniversaryl'>
+                                <img src="/images/unniversary.png" />
+                            </div>
+                        </div>
+                        <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+                        <h2>Event Details</h2>
+                        <ul>
+                            {/* <li>
+                                <h5>Date:</h5>
+                                <h6>Sunday, 26th February 2023</h6>
+                            </li> */}
+                            <li>
+                                <h5>Time:</h5>
+                                <h6>4:00 pm onwards</h6>
+                            </li>
+                            <li>
+                                <h5>Venue:</h5>
+                                <h6>Country Club, Andheri West</h6>
+                            </li>
+                            <li>
+                                <h5>Dress Code:</h5>
+                                <h6>Traditional Indian Wear</h6>
+                            </li>
+                        </ul>
+                    </div> : null
+                }
+                {
                     registration ? <form onSubmit={handleClick}>
                         <div className='regfrom'>
-                            <input required type='tel' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
+                            <input required minlength="10" type='tel' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
                                 setmobilenumber(event.target.value)
                             }}></input>
                             <input required value={firstname} placeholder='First Name' onChange={(event) => {
@@ -160,18 +178,18 @@ function Login() {
                             <button type="submit" > Submit</button>
                         </div>
                     </form> : null
-                    }
+                }
 
-                    {
+                {
                     loginstate ? <form onSubmit={loginClick}>
                         <div className='regfrom'>
-                            <input required type='tel' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
+                            <input required type='tel' minlength='10' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
                                 setmobilenumber(event.target.value)
                             }}></input>
                             <button type="submit" > Submit</button>
                         </div>
                     </form> : null
-                    }
+                }
             </div>
             {
                 showpopup ? <div className='c-popupbg'>
