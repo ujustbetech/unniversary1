@@ -364,6 +364,17 @@ input {
   column-gap: 10px;
 }
 
+.countdownfour {
+    font-size: 70px;
+    line-height: 64px;
+    color: #fe6f06;
+    font-weight: 800;
+    font-family: "Mukta", sans-serif;
+    text-align: center;
+    display: flex;
+    column-gap: 10px;
+}
+
 .show-counter .countdown-link .eventtime p {
   display: flex;
   font-size: 24px;
