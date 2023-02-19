@@ -105,6 +105,21 @@ function Login() {
 
     const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
 
+    // To set two dates to two variables
+    var date1 = new Date();
+    var date2 = new Date("02/26/2023");
+
+    // To calculate the time difference of two dates
+    var Difference_In_Time = date2.getTime() - date1.getTime();
+
+    // To calculate the no. of days between two dates
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+    let TotalDays = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
+    console.log(TotalDays + ' days to world Cup');
+
+    // console.log(Difference_In_Days);
+
 
     return (
         <section className='c-loginpage'>
@@ -135,7 +150,16 @@ function Login() {
                                 <img src="/images/unniversary.png" />
                             </div>
                         </div>
-                        <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+                        {/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
+                        <div className='show-counter'>
+                            <div className='eventdate'>
+                                <h4>26th February 2023</h4>
+                            </div>
+                            <div className='countdownfour'>
+                                {TotalDays} DAYS
+                                {/* <DateTimeDisplay value={days} type={'DAYS'} isDanger={days <= 3} /> */}
+                            </div>
+                        </div>
                         <h2>Event Details</h2>
                         <ul>
                             {/* <li>
