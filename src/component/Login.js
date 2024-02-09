@@ -1,7 +1,6 @@
-"use client";
-import CountdownTimer from '../CountdownTimer';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Router, useRouter } from 'next/router';
 // import logo from '../images/logo.png'
 
 function Login() {
@@ -16,12 +15,81 @@ function Login() {
     const [loginstate, setlogin] = useState(true);
     const [loginfailedpopup, setloginfailedpopup] = useState(false);
     const [loginDone, setloginDone] = useState(false);
+    const [attendance, setattendance] = useState(false);
+    const [foodcounter, setfoodcounter] = useState(false);
 
+    const router2 = useRouter()
+
+    // useEffect(() => {
+    //     const saved = localStorage.getItem("itmes");
+    //     const localstoragedata = JSON.parse(saved)
+    //     if (saved) {
+    //         console.log("already Login", localstoragedata.firstname);
+    //         setlogin(false);
+    //         setloginDone(true);
+    //         setresponsedata(localstoragedata)
+    //         // console.log(responsedata.firstname);
+    //         router2.push("/" + localstoragedata.phonenumber )
+
+    //     } else {
+
+    //     }
+    // }, [])
+
+    useEffect(() => {
+
+
+        const saved = localStorage.getItem("itmes");
+        const localstoragedata = JSON.parse(saved)
+
+        if (saved) {
+            console.log("already Login", localstoragedata.firstname);
+            axios.get(`https://plankton-app-i2dnd.ondigitalocean.app/login/${localstoragedata.phonenumber}/`).then(response => {
+                console.log(response);
+                const alldata = response.data;
+                setresponsedata(alldata)
+                if (alldata.attendance === 1) {
+                    // setPesent(true)
+                    router2.push("/" + localstoragedata.phonenumber)
+                }
+                // if (alldata.foodcounter === 1) {
+                //   setfoodcounter(true)
+                // }
+
+            });
+
+        }
+    }, [])
 
     const hidepopup = (e) => {
         setshowpopup(false)
         setshowpopup2(false)
         setloginfailedpopup(false)
+    }
+
+    const localstorage = (localdata) => {
+        console.log("local storage", localdata);
+        const itmes = {
+            firstname: localdata.firstname,
+            lastname: localdata.lastname,
+            phonenumber: localdata.phonenumber,
+            attendance: localdata.attendance,
+            foodcounter: localdata.foodcounter
+
+        }
+        localStorage.setItem('itmes', JSON.stringify(itmes));
+    };
+
+
+    const scanClick = async (e) => {
+        e.preventDefault();
+
+        const saved = localStorage.getItem("itmes");
+        const localstoragedata = JSON.parse(saved)
+        console.log("current login", localstoragedata.phonenumber);
+        router2.push("/" + localstoragedata.phonenumber)
+
+
     }
 
     const handleClick = async (e) => {
@@ -30,11 +98,11 @@ function Login() {
             firstname: firstname,
             lastname: lastname,
             role: role,
-            phonenumber: mobilenumber,
+            number: mobilenumber,
         }
         console.log(user);
         const response = await axios
-            .post('https://plankton-app-i2dnd.ondigitalocean.app/reg/', user)
+            .post('https://unniversary.ujustconnect.com/register.php', user)
             .catch((error) => console.log('Error: ', error));
         if (response && response.data) {
             console.log(response);
@@ -51,6 +119,7 @@ function Login() {
                     setloginDone(true)
                     setlogin(false)
                     setregistration(false)
+                    localstorage(response.data);
 
 
                 }, 3000);
@@ -73,11 +142,17 @@ function Login() {
             // 
             .then(response => {
                 const posts = response.data;
+                console.log("all data", posts);
                 setresponsedata(response.data);
-                console.log(response);
+                console.log("after login", response);
                 if (response.status === 200) {
                     setloginDone(true)
                     setlogin(false)
+                    setattendance(true)
+                    // setfoodcounter(true)
+                    setresponsedata(response.data);
+                    localstorage(response.data);
+                    router2.push("/" + response.data.phonenumber)
                 }
                 //   this.setState ({posts});
             }).catch((error) => {
@@ -99,7 +174,6 @@ function Login() {
 
         console.log(showpopup);
     };
-
     const THREE_DAYS_IN_MS = 12 * 24 * 60 * 60 * 1000;
     const NOW_IN_MS = new Date().getTime();
 
@@ -117,8 +191,6 @@ function Login() {
 
     let TotalDays = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
     console.log(TotalDays + ' days to world Cup');
-
-    // console.log(Difference_In_Days);
 
 
     return (
@@ -150,35 +222,17 @@ function Login() {
                                 <img src="/images/unniversary.png" />
                             </div>
                         </div>
-                        {/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
-                        <div className='show-counter'>
-                            <div className='eventdate'>
-                                <h4>26th February 2023</h4>
-                            </div>
-                            <div className='countdownfour'>
-                                {TotalDays} DAYS
-                                {/* <DateTimeDisplay value={days} type={'DAYS'} isDanger={days <= 3} /> */}
-                            </div>
-                        </div>
-                        <h2>Event Details</h2>
-                        <ul>
-                            {/* <li>
-                                <h5>Date:</h5>
-                                <h6>Sunday, 26th February 2023</h6>
-                            </li> */}
-                            <li>
-                                <h5>Time:</h5>
-                                <h6>4:00 pm onwards</h6>
-                            </li>
-                            <li>
-                                <h5>Venue:</h5>
-                                <h6>Country Club, Andheri West</h6>
-                            </li>
-                            <li>
-                                <h5>Dress Code:</h5>
-                                <h6>Traditional Indian Wear</h6>
-                            </li>
-                        </ul>
+                        {
+                            attendance ? <div className='welcomemessage'>
+                                <h5>
+                                    Something Plus Business
+                                </h5>
+                                <h6>Welcome to Exploration Journey {responsedata.firstname} {responsedata.lastname}</h6>
+
+                            </div> : <div className='scan'>
+                                <button onClick={scanClick}>Scan Attendance</button></div>
+                        }
+
                     </div> : null
                 }
                 {
@@ -198,7 +252,7 @@ function Login() {
                             }}>
                                 <option value="none" selected disabled hidden>Select Role</option>
                                 <option value="Orbiter">Orbiter</option>
-                                <option value="Cosmonaut">Cosmonaut</option>
+                                <option value="Cosmonaut">CosmOrbiter</option>
                                 <option value="Guest">Guest</option>
                             </select>
 
@@ -213,7 +267,7 @@ function Login() {
                             <input required type='tel' minlength='10' value={mobilenumber} placeholder='Mobile Number' onChange={(event) => {
                                 setmobilenumber(event.target.value)
                             }}></input>
-                            <button type="submit" > Submit</button>
+                            <button type="submit"  > Submit</button>
                         </div>
                     </form> : null
                 }
@@ -251,7 +305,7 @@ function Login() {
                         </div>
                     </div></div> : null
             }
-        </section>
+        </section >
     )
 }
 
